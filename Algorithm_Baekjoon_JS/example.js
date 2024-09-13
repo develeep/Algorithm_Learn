@@ -1,5 +1,5 @@
 const input = require('fs')
-  .readFileSync('/dev/stdin')
+  .readFileSync(0, 'utf-8')
   .toString()
   .trim()
   .split('\n');
