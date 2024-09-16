@@ -8,3 +8,37 @@
 
 // 출력
 // 첫째 줄부터 N개의 줄에 행렬 A와 B를 더한 행렬을 출력한다. 행렬의 각 원소는 공백으로 구분한다.
+const input = require('fs')
+  .readFileSync(0, 'utf-8')
+  .toString()
+  .trim()
+  .split('\n');
+
+const [n, m] = input[0].split(' ').map((i) => +i);
+input.shift();
+
+// const arr = input.reduce((acc, cur, idx) => {
+//   if (idx < n) {
+//     acc['a'] = acc['a'] ? [...acc['a'], ...cur.split(' ')] : cur.split(' ');
+//   }
+//   if (idx >= n) {
+//     acc['b'] = acc['b'] ? [...acc['b'], ...cur.split(' ')] : cur.split(' ');
+//   }
+//   return acc;
+// }, {});
+
+// const result = arr.a.reduce((acc, cur, idx) => {
+//   return [...acc, +cur + +arr.b[idx]];
+// }, []);
+
+// for (i = 0; i < n; i++) {
+//   const spliceArr = result.splice(0, m);
+//   console.log(spliceArr.join(' '));
+// }
+
+// 일케 간단히도 할수 있구나..
+for (i = 0; i < n; i++) {
+  const a = input[i].split(' ').map((x) => +x);
+  const b = input[i + n].split(' ').map((x) => +x);
+  console.log(a.map((num, idx) => num + b[idx]).join(' '));
+}
