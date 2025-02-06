@@ -22,16 +22,20 @@ for tc in range(1, T + 1):
     t, length = input().split()
     str_arr = input().split()
     arr = []
-    result = ''
+    result = [0] * len(str_arr)
     count = [0] * 10
 
     for s in str_arr:
         n = NUM[s]
         count[n] += 1
 
-    for idx in range(len(count)):
-        if count[idx]:
-            result += (key[idx] + ' ') * count[idx]
+    for idx in range(1, len(count)):
+        count[idx] += count[idx-1]
+
+    for idx in range(len(str_arr)-1, -1, -1):
+        n = NUM[str_arr[idx]]
+        result[count[n]-1] = str_arr[idx]
+        count[n] -= 1
 
     print(t)
-    print(result)
+    print(' '.join(result))
