@@ -12,7 +12,6 @@ for tc in range(1, T + 1):
         min_box = min(arr)
         max_idx = arr.index(max_box)
         min_idx = arr.index(min_box)
-
         if max_box - min_box <= 1:
             result = max_box - min_box
             break
