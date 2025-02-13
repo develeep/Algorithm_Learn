@@ -34,3 +34,47 @@ for tc in range(1, T + 1):
     a = result.count(1)
     b = result.count(2)
     print(f'#{tc} {a} {b}')
+#
+# dx = [1, 0, -1, 0, 1, -1, 1, -1]
+# dy = [0, 1, 0, -1, 1, -1, -1, 1]
+#
+# T = int(input())
+# for test_case in range(1, T + 1):
+#     n, m = map(int, input().split())
+#     board = [[0] * (n + 1) for _ in range(n + 1)]
+#     seq = [tuple(map(int, input().split())) for _ in range(m)]
+#
+#     cnr = n // 2
+#     board[cnr][cnr] = 2
+#     board[cnr][cnr + 1] = 1
+#     board[cnr + 1][cnr] = 1
+#     board[cnr + 1][cnr + 1] = 2
+#
+#
+#     def func(_x, _y, _d, _color):
+#         _x += dx[_d]
+#         _y += dy[_d]
+#         if _x < 1 or n < _x or _y < 1 or n < _y:
+#             return False
+#         if board[_x][_y] == 0:
+#             return False
+#         if board[_x][_y] == _color:
+#             return True
+#         if func(_x, _y, _d, _color):
+#             board[_x][_y] = _color
+#             return True
+#
+#
+#     for x, y, color in seq:
+#         board[x][y] = color
+#         for d in range(8):
+#             func(x, y, d, color)
+#
+#     cntw, cntb = 0, 0
+#     for col in board:
+#         for i in col:
+#             if i == 1:
+#                 cntb += 1
+#             elif i == 2:
+#                 cntw += 1
+#     print(f'#{test_case} {cntb} {cntw}')
