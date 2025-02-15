@@ -19,19 +19,19 @@ for tc in range(1, T + 1):
                 move = abs(x - b[-1][1]) + 1
             else:
                 move = x = int(arr[i+1])
-            b.append(move,arr)
+            b.append([move,x])
         else:
             if o:
                 x = int(arr[i + 1])
                 move = abs(x - o[-1][1]) + 1
             else:
                 move = x = int(arr[i + 1])
-            o.append(move, arr)
-    b =
+            o.append([move, x])
+    b = deque(list(zip(*b))[0]) if b else ()
+    o = deque(list(zip(*o))[0]) if o else ()
     b_move = b.popleft() if b else 101
     o_move = o.popleft() if o else 101
     while 1:
-        print(f'b = {b_move} o = {o_move} t = {t}')
         if not color_arr:
             break
         c = color_arr.popleft()
@@ -52,4 +52,4 @@ for tc in range(1, T + 1):
                 b_move -= 1
             o_move = o.popleft() if o else 101
 
-    print(t)
+    print(f'#{tc} {t}')
