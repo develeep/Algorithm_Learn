@@ -1,7 +1,7 @@
 import sys
 sys.stdin = open('input.txt', 'r')
 ##################################################
-dir = [2,1,4,3]
+:dir = [2,1,4,3]
 w,h = map(int,input().split())
 n = int(input())
 arr = [list(map(int,input().split())) for _ in range(n)]
