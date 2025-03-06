@@ -23,7 +23,6 @@ def f(idx,flag):
         if c < res:
             res = c
             res_idx = idx
-        res = min(res,c)
 
     return c, fl
 
