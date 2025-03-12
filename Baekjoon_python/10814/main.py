@@ -29,3 +29,7 @@ users = [input().split() for _ in range(n)]
 # users.sort(key=lambda x:int(x[0]))
 res = sort(users)
 print('\n'.join([' '.join(user) for user in res]))
+
+
+import heapq
+heapq.heappop()
