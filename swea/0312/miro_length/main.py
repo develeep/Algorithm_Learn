@@ -28,6 +28,7 @@ def bfs(xy):
             if miro[nx][ny] == 3:
                 return depth
             visited[nx][ny] = 1
+
             q.append((nx,ny,depth+1))
     return 0
 
