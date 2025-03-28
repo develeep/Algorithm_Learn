@@ -3,7 +3,10 @@
 - 백준 링크  
 https://www.acmicpc.net/user/dltmdgns0508
 
+- SWEA
+
 ### 사용 언어
 - node.js
+- python
 
 
