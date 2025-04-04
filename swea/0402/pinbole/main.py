@@ -6,40 +6,36 @@ dxy = ((-1,0),(1,0),(0,-1),(0,1))
 walls = ((1,3,0,2),(3,0,1,2),(2,0,3,1),(1,2,3,0))
 block = {0:1,1:0,2:3,3:2}
 
-def dfs(x,y,d,cnt):
-    history = [(x,y)]
-    nx,ny = x,y
+def f(start_x,start_y,d):
+    cnt = 0
+    direction = d
+    x,y = start_x, start_y
     while 1:
-        nx, ny = nx + dxy[d][0], ny + dxy[d][1]
-        if not(0<=nx<n and 0<=ny<n):
-            cnt = (cnt*2) + 1
-            break
-        if grid[nx][ny] == -1:
-            break
-        if his[nx][ny][d]:
-            cnt += his[nx][ny][d]
-            break
-        if grid[nx][ny] == 5:
-            cnt = (cnt*2) + 1
-            break
-        if 1 <= grid[nx][ny] < 5:
-            change_d = walls[grid[nx][ny] - 1][d]
-            if block[change_d] == d:
-                cnt = (cnt * 2) + 1
-                break
+        x, y = x + dxy[direction][0], y + dxy[direction][1]
+        if (start_x,start_y) == (x,y):
+            return cnt
+
+        if not(0<=x<n and 0<=y<n):
+            return (cnt*2) + 1
+        if grid[x][y] == 0:
+            continue
+        if grid[x][y] > 5:
+            for hole in holes[grid[x][y]]:
+                if hole != (x,y):
+                    x,y = hole
+                    break
+            continue
+        if grid[x][y] == -1:
+            return cnt
+        if grid[x][y] == 5:
+            return (cnt*2) + 1
+        if 1 <= grid[x][y] < 5:
+            change_d = walls[grid[x][y] - 1][direction]
+            if block[change_d] == direction:
+                return (cnt * 2) + 1
             else:
-                cnt = dfs(nx, ny, change_d, 0) + 2
-                break
-        else:
-            history.append((nx,ny))
-            if grid[nx][ny] > 5:
-                for hole in holes[grid[nx][ny]]:
-                    if hole != (nx,ny):
-                        nx,ny = hole
-                        history.append((nx,ny))
-                        break
-    for hx,hy in history:
-        his[hx][hy][d] = cnt
+                direction = change_d
+                cnt += 1
     return cnt
 
 
@@ -59,8 +55,6 @@ for tc in range(1, T+1):
         for j in range(n):
             if grid[i][j] == 0:
                 for d in range(4):
-                    if his[i][j][d]:
-                        continue
-                    res = dfs(i,j,d,0)
+                    res = f(i,j,d)
                     result = max(res,result)
     print(f"#{tc}", result)

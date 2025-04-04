@@ -47,6 +47,7 @@ for tc in range(1, T + 1):
     result = -1
     for i in range(n - 1):
         for j in range(1, n - 1):
+            history = []
             res = bfs(i, j, 0, 0, 0, [])
 
     print(f'#{tc}', result)
