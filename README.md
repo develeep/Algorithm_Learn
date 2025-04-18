@@ -7,6 +7,6 @@ https://www.acmicpc.net/user/dltmdgns0508
 
 ### 사용 언어
 - node.js
-- python
+- python 3.9
 
 
